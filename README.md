@@ -11,7 +11,8 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-Animated Text Custom Field which can be used to animate text field and errors by modifuing the text field widget.
+Animated Text Custom Field which can be used to animate text field and errors by modifying the text field widget.
+It use custom fade animation from package [simple_animations](https://pub.dev/packages/simple_animations) to animate the text field and errors and hide error after interval of time (default 10 seconds).
 
 
 ## Features
