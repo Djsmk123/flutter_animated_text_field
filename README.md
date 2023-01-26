@@ -93,6 +93,6 @@ flutter run
 
 ## Output
 
-![Output sample]("./outputs/1.png")
+![output sample1](./outputs/1.png)
 
-![Output sample]("./outputs/2.png")
+![Output sample2](./outputs/2.png)
