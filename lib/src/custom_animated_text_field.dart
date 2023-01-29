@@ -10,8 +10,10 @@ class CustomTextField extends StatefulWidget {
   final TextEditingController? controller;
   final Duration? errorDuration;
   final TextStyle? errorStyle;
+  final double? fadeAnimationDuration;
   final String errorKey;
   final bool? obscureText;
+  final Widget? customErrorWidget;
   final CustomTextInputDecoration? decoration;
   final bool? enabled;
   final bool? autofocus;
@@ -47,10 +49,12 @@ class CustomTextField extends StatefulWidget {
       this.decoration,
       required this.errorKey,
       this.textAlign,
+      this.fadeAnimationDuration,
       this.obscureText,
       this.scrollController,
       this.enabled,
       this.autofocus,
+      this.customErrorWidget,
       this.keyboardType,
       this.readOnly,
       this.autocorrect,
@@ -112,7 +116,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         FadeAnimation(
-          1.5,
+          widget.fadeAnimationDuration ?? 1.5,
           TextFormField(
             controller: widget.controller,
             decoration: widget.decoration != null
@@ -216,26 +220,28 @@ class _CustomTextFieldState extends State<CustomTextField> {
           Padding(
             padding: const EdgeInsets.only(top: 5, bottom: 20),
             child: FadeAnimation(
-                2,
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.error,
-                      color: Colors.red,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Flexible(
-                      child: Text(
-                        errorText,
-                        maxLines: 3,
-                        style: widget.errorStyle ??
-                            const TextStyle(color: Colors.red),
+              widget.fadeAnimationDuration ?? 1.5,
+              widget.customErrorWidget ??
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.error,
+                        color: Colors.red,
                       ),
-                    ),
-                  ],
-                )),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Flexible(
+                        child: Text(
+                          errorText,
+                          maxLines: 3,
+                          style: widget.errorStyle ??
+                              const TextStyle(color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  ),
+            ),
           )
       ],
     );
