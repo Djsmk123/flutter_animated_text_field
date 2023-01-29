@@ -87,8 +87,7 @@ It use custom fade animation from package [simple_animations](https://pub.dev/pa
                         ),
                         validator: (String? value) {
                           if (value != null) {
-                            if (!TextErrorservice.isValidPasswordLength(value,  //using TextErrorService to validate password 
-                                length: 8)) {
+                            if (!value.hasPasswordLength(length: 8)) {
                               return "Password must be at least 8 characters";
                             }
                           }
